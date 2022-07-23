@@ -1,0 +1,43 @@
+<app-overlay *ngIf="showLoading$ | async">
+  <app-loader></app-loader>
+</app-overlay>
+
+<ng-container *ngIf="(sportsList$ | async)?.results as list">
+  <!--{{ list | json}}-->
+  <!-- 
+    Id: 342,
+      Name: 'Calcio',
+      Order: 1,
+      NumSubevents: 913,
+      NumQuote: 521919,
+      Antepost: 0
+   -->
+  <ul class="bg-dark-900">
+    <li *ngFor="let item of list">
+      <app-expandable
+        [expandableName]="item.Name"
+        [headerText]="item.Name"
+        [headerSubtitle]="item.NumSubevents + ''"
+        [expandableWrapperClass]="'bg-dark-900'"
+        [headerIcon]="item.Name.toLowerCase()"
+        [isStatic]="true"
+      ></app-expandable>
+    </li>
+  </ul>
+</ng-container>
+
+<!--<app-expandable
+  [expandableName]="item.group"
+  [headerText]="item.group"
+  [expandableContentClass]="'bg-dark850'"
+  [expandableWrapperClass]="'bg-dark750'"
+  [isLarge]="true"
+>
+  <ul class="expandable-list">
+    <li *ngFor="let linkData of item.linkGroup" class="list-item">
+      <a [href]="linkData.link" class="block w-100 txt-light">{{
+        linkData.title
+      }}</a>
+    </li>
+  </ul>
+</app-expandable>-->

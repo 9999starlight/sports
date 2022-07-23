@@ -1,0 +1,40 @@
+@import "variables", "mixins";
+
+.btn-expandable {
+  justify-content: space-between;
+  align-items: center;
+  @include box-size($width: 100%, $min-height: 4.4rem);
+  letter-spacing: .3px;
+  /*color: $light-secondary;*/
+  cursor: pointer;
+  padding: 1.1rem 0;
+
+}
+
+.span-wrapper {
+  @include alignment($justify: space-between, $align: center);
+}
+
+.num-events {
+  margin-inline-end: 0.5rem;
+}
+
+span img {
+  align-self: center;
+}
+
+.xl-button {
+  min-height: 5.7rem;
+}
+
+.expandable-content {
+  @include box-size($width: 100%);
+  padding: 0 1rem;
+  text-align: center;
+  overflow: auto;
+}
+
+/*.hidden-icon {
+  display: none;
+}*/
+

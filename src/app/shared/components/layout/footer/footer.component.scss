@@ -1,0 +1,11 @@
+@import 'mixins';
+
+:host {
+  grid-area: footer;
+  overflow: hidden;
+}
+
+footer {
+ @include alignment($display: flex, $justify: center);
+ padding: 1rem;
+}

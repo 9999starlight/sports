@@ -1,0 +1,69 @@
+// text colors
+$txt-colors: (
+  'light': $light-primary,
+  'dark': $dark-primary,
+  'dark-900': $dark-900,
+  'dark-800': $dark-800,
+  'dark-700': $dark-700,
+  'dark-600': $dark-600,
+  'brand': $brand-primary-color,
+  'brand-secondary': $brand-secondary-color,
+  'error': $error-primary-color,
+  'success': $success-primary-color
+);
+
+@each $colorname, $color in $txt-colors {
+  .text-#{$colorname} {
+    color: $color;
+  }
+}
+
+// Titles & Subtitles
+
+.title-large {
+  @include fonts($size: $font-large, $weight: 400);
+}
+
+.title-medium {
+  @include fonts($size: $font-subtitle, $weight: 400);
+}
+
+// Text
+.text-regular {
+  @include fonts($size: $font-large, $weight: 400);
+}
+
+.text-small {
+  @include fonts($size: $font-small);
+}
+
+.text-smallest {
+  @include fonts($size: $font-smallest);
+}
+
+// Misc
+
+.underlined {
+  text-decoration: underline;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-inherit {
+  font-size: inherit;
+}
+

@@ -1,0 +1,38 @@
+/* COLORS */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+$brand-primary-color: #fab615;
+$brand-secondary-color: #f8cb24; // texts
+$success-primary-color: #28b328;
+/*$info-primary-color: #009fff;*/
+$error-primary-color: #ff3939;
+
+// monochromatic
+$light-primary: #fff;
+$dark-primary: #22262b;
+$dark-900: #3a3e45;
+$dark-800: #54585e;
+$dark-700: #b9bdc4;
+$dark-600: #f1fefe;
+
+// overlays
+$dark-overlay: transparentize($dark-primary, 0.65);
+$darker-overlay: transparentize($dark-primary, 0.35);
+//$dark-side-gradient: linear-gradient(to right, rgba(0, 0, 0, 0), $dark-primary);
+
+/* TYPOGRAPHY */ // mobile
+
+$font-family-regular: 'Roboto', sans-serif;
+
+// fonts
+$font-large: 1.8rem;
+$font-regular: 1.6rem;
+$font-subtitle: 1.4rem;
+$font-small: 1.3rem;
+$font-smallest: 1.2rem;
+
+// spacings
+$spacing-xxxl: 0.3px;
+
+// @media breakpoints
+$screen-small: 576px;
+$screen-medium: 768px;

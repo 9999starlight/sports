@@ -1,0 +1,21 @@
+/* Background color classes */
+
+$bg-colors: (
+  "dark": $dark-primary,
+  "dark-900": $dark-900,
+  "dark-800": $dark-800,
+  "dark-700": $dark-700,
+  "dark-600": $dark-600,
+  "light": $light-primary,
+  "brand": $brand-primary-color,
+  "brand-secondary": $brand-secondary-color,
+  "success": $success-primary-color,
+  "error": $error-primary-color,
+  "transparent": transparent,
+);
+
+@each $colorname, $color in $bg-colors {
+  .bg-#{$colorname} {
+    background-color: $color;
+  }
+}

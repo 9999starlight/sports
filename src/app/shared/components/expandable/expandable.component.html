@@ -1,0 +1,80 @@
+<div class="expandable-wrapper relative w-100" [class]="expandableWrapperClass">
+  <ng-container *ngIf="!isStatic">
+    <div
+      class="btn-expandable flex"
+      role="button"
+      aria-haspopup="true"
+      [attr.aria-label]="
+        !isOpen ? 'Open ' + expandableName : 'Close ' + expandableName
+      "
+      [attr.aria-expanded]="!isOpen ? false : true"
+      tabindex="0"
+      (click)="toggleDropdown()"
+      (keyup.enter)="isOpen = true"
+      (keyup.esc)="isOpen = false"
+      [ngClass]="isLarge ? 'padding-large' : 'padding-small'"
+    >
+      <p>
+        <span class="flex flex-center">
+          <span *ngIf="headerIcon" [class]="headerIcon"></span>
+          <span class="flex flex-column">
+            <span>{{ headerText }}</span>
+            <span *ngIf="headerSubtitle">{{ headerSubtitle }}</span>
+          </span>
+        </span>
+      </p>
+      <!--<ng-container *ngIf="isStatic"; else #expanding;>
+		<img src="../../../../assets/angle-up.svg" alt="icon right" class="icon-18 block bg-dark-600 icon-angle-up rotate-right" />
+	</ng-container>-->
+
+      <ng-container *ngIf="isOpen" ; else #closed;>
+        <img
+          src="../../../../assets/angle-up.svg"
+          alt="icon up"
+          class="icon-18 block bg-dark-600 icon-angle-up"
+        />
+      </ng-container>
+      <ng-template #closed>
+        <img
+          src="../../../../assets/angle-up.svg"
+          alt="icon down"
+          class="icon-18 block bg-dark-600 icon-angle-down"
+        />
+      </ng-template>
+    </div>
+    <div
+      *ngIf="isOpen"
+      class="expandable-content"
+      [class]="expandableContentClass"
+    >
+      <ng-content></ng-content>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isStatic">
+    <a class="btn-expandable flex text-light" tabindex="0">
+      <!--<span class="flex span-wrapper">-->
+        
+        <span class="flex">
+          <span class="inline-block mgr-2">
+            <ng-container *ngIf="headerIcon === 'calcio' || headerIcon === 'basket' || headerIcon === 'tennis'; else placeholder" >
+            <img [src]="'../../../../assets/' + headerIcon + '.svg'" [alt]="headerIcon" class="icon-22">
+          </ng-container>
+          <ng-template #placeholder>
+            <span  class="icon-22 bg-dark-600 icon-search inline-block"></span>
+          </ng-template>
+          </span>
+          <span>{{ headerText }}</span>
+        </span>
+        <span class="flex flex-center"
+          >
+          <span *ngIf="headerSubtitle" class="num-events">{{ headerSubtitle }}</span>
+          <span  class="icon-18 bg-dark-600 icon-angle-up rotate-right inline-block">
+          </span>
+        </span>
+        <!--<span class="inline-block">
+          
+        </span>-->
+      <!--</span>-->
+    </a>
+  </ng-container>
+</div>

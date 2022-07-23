@@ -1,0 +1,14 @@
+/* Buttons & links */
+
+button,
+.btn {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-brand {
+  background-color: $brand-primary-color;
+    color: $dark-primary;
+}
+

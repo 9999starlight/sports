@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Endpoints } from '../endpoints/endpoints';
+import { SportsList } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class FetchService {
   apiUrl = '../api';
 
-  fetchCategories() {
-    return this.http.get(`${this.apiUrl}/sportslist`);
+  fetchSportslist() {
+    return this.http.get<SportsList[]>(`${this.apiUrl}${Endpoints.Sportslist}`);
   }
    
   constructor(private http: HttpClient) { }

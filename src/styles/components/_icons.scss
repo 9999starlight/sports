@@ -1,0 +1,50 @@
+// header svgs before link text
+.icon-inline {
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 0.6rem;
+}
+
+// icon size classes
+$icon-sizes: (
+  "18": 1.8,
+  "22": 2.2,
+  "52": 5,
+);
+
+@each $iconName, $iconSize in $icon-sizes {
+  .icon-#{$iconName} {
+    width: #{$iconSize} + "rem";
+    height: #{$iconSize} + "rem";
+  }
+}
+
+.svg-icon {
+  @include svg-container();
+}
+
+.svg-cover {
+  mask-size: cover;
+}
+
+.rotate-right {
+  transform: rotate(90deg);
+}
+
+$icons: (
+  "angle-up": "../../assets/angle-up.svg",
+  "angle-down": "../../assets/angle-down.svg",
+  "basket": "../../assets/basket.svg",
+  "calcio": "../../assets/calcio.svg",
+  "internacionali": "../../assets/internacionali.svg",
+  "search": "../../assets/search.svg",
+  "stats": "../../assets/stats.svg",
+  "tennis": "../../assets/tennis.svg",
+);
+
+@each $iconName, $iconPath in $icons {
+  .icon-#{$iconName} {
+    -webkit-mask-image: url($iconPath);
+    mask-image: url($iconPath);
+  }
+}
