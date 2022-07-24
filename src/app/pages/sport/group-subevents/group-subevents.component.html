@@ -1,0 +1,51 @@
+<app-overlay *ngIf="showLoading$ | async">
+  <app-loader></app-loader>
+</app-overlay>
+<ul *ngIf="(eventsList$ | async)?.results as eventsList">
+  <li *ngFor="let item of eventsList">
+    <app-expandable
+      [expandableName]="item.Name"
+      [headerText]="item.Name"
+      [headerSubtitle]="item.NumSubevents + ''"
+      [expandableWrapperClass]="'bg-dark-800'"
+      [headerIcon]="item.SportName.toLowerCase()"
+      [id]="item.Id"
+    >
+      <!-- CONTENT -->
+      <!--<p class="bg-dark-800">{{  }}</p>-->
+      <ul class="main-list">
+        <li *ngFor="let event of item.Subevents">
+          <p class="bg-dark-800 event-date text-left pdx-2">
+            {{ event.StartTimeUtc | date: "fullDate" }}
+          </p>
+          <div class="bg-dark">
+			<!-- passing hardcoded endpoint (instead of id) for param -->
+            <a [routerLink]="
+			event.Id === 120718887
+			  ? ['/sports/' + routeParams.group + '/' + routeParams.subevent, 'senegal-netherlands-quotas']
+			  : ['/sports/' + routeParams.group + '/' + routeParams.subevent]
+		  " class="flex pdx-2 intro">
+              <span class="icon-18 bg-dark-600 icon-stats inline-block"> </span>
+              <time class="text-small text-info mgl-2">{{
+                event.StartTimeUtc | date: "shortTime"
+              }}</time>
+              <span class="inline-block mgl-4">{{ event.Name }}</span>
+			  <span
+                class="icon-18 bg-dark-600 icon-angle-up rotate-right inline-block"
+              ></span>
+            </a>
+            <ng-container *ngFor="let market of event.Markets">
+              <div class="card-wrapper flex">
+                <app-card
+                  *ngFor="let odd of market.Odds"
+                  [selection]="odd.Selection"
+                  [value]="odd.Value"
+                ></app-card>
+              </div>
+            </ng-container>
+          </div>
+        </li>
+      </ul>
+    </app-expandable>
+  </li>
+</ul>

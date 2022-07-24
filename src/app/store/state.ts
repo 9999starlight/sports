@@ -1,11 +1,17 @@
-import { LoaderState, SportsList } from '../shared/interfaces/interfaces';
+import {
+  GroupList,
+  GroupSubevents,
+  LoaderState,
+  SportsList,
+} from '../shared/interfaces/interfaces';
 import { ListState } from './interfaces/state.models';
 
 export interface sharedAppState {
   loader: LoaderState;
-  sportsList: {results: SportsList[]};
+  sportsList: { results: SportsList[] };
+  groupList: { results: GroupList[] };
+  eventsList: { results: GroupSubevents[] };
 }
-
 
 export const initialAppState: sharedAppState = {
   loader: {
@@ -13,7 +19,14 @@ export const initialAppState: sharedAppState = {
   },
 
   sportsList: {
-	results: []
+    results: [],
+  },
+
+  groupList: {
+    results: [],
+  },
+
+  eventsList: {
+    results: [],
   }
-  
 };

@@ -3,15 +3,6 @@
 </app-overlay>
 
 <ng-container *ngIf="(sportsList$ | async)?.results as list">
-  <!--{{ list | json}}-->
-  <!-- 
-    Id: 342,
-      Name: 'Calcio',
-      Order: 1,
-      NumSubevents: 913,
-      NumQuote: 521919,
-      Antepost: 0
-   -->
   <ul class="bg-dark-900">
     <li *ngFor="let item of list">
       <app-expandable
@@ -20,6 +11,8 @@
         [headerSubtitle]="item.NumSubevents + ''"
         [expandableWrapperClass]="'bg-dark-900'"
         [headerIcon]="item.Name.toLowerCase()"
+        [id]="item.Id"
+        [group]="item.Name.toLowerCase()"
         [isStatic]="true"
       ></app-expandable>
     </li>

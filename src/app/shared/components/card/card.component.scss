@@ -1,0 +1,9 @@
+@import "variables", "mixins";
+:host {
+	display: block;
+	width: 30%;
+}
+div {
+	border: 1px solid $light-primary;
+	height: 5rem;
+}

@@ -1,7 +1,7 @@
 export enum Endpoints {
   Sportslist = '/sportslist',
   TopEvents = '/top-events',
-  GroupList = '/grouplist',
+  /*GroupList = '/grouplist-calcio',*/
   ActiveMarketsMondiali = '/active-markets-mondiali',
   ActiveOddgroupsMondiali = '/activeoddgroups-mondiali',
   SubeventsMondiali = '/subevents-mondiali',

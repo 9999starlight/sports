@@ -22,5 +22,15 @@ export const appSharedReducer = createReducer(
 
   on(CoreActions.sportsListGetSuccess, (state, { results }) => {
     return { ...state, sportsList: { results } };
+  }),
+
+  on(CoreActions.sportGroupGetSuccess, (state, { results }) => {
+    return { ...state, groupList: { results } };
+  }),
+
+  on(CoreActions.sportSubeventsGetSuccess, (state, { results }) => {
+    return { ...state, eventsList: { results } };
   })
+
+  //sportSubeventsGetSuccess
 );

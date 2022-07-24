@@ -9,7 +9,8 @@ $txt-colors: (
   'brand': $brand-primary-color,
   'brand-secondary': $brand-secondary-color,
   'error': $error-primary-color,
-  'success': $success-primary-color
+  'success': $success-primary-color,
+  'info': $info-primary-color,
 );
 
 @each $colorname, $color in $txt-colors {

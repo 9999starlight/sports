@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { LogoComponent } from './components/layout/header/logo/logo.component';
 import { LoaderComponent } from './widgets/loader/loader.component';
 import { OverlayComponent } from './components/overlay/overlay.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OverlayComponent } from './components/overlay/overlay.component';
     
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     CardComponent,

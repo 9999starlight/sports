@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Endpoints } from '../endpoints/endpoints';
-import { SportsList } from '../interfaces/interfaces';
+import { GroupList, GroupSubevents, SportsList } from '../interfaces/interfaces';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FetchService {
   apiUrl = '../api';
@@ -12,6 +12,15 @@ export class FetchService {
   fetchSportslist() {
     return this.http.get<SportsList[]>(`${this.apiUrl}${Endpoints.Sportslist}`);
   }
-   
-  constructor(private http: HttpClient) { }
+
+  fetchSportGroup(group: string) {
+    return this.http.get<GroupList[]>(`${this.apiUrl}/${group}`);
+  }
+
+  fetchSubevents(event: string) {
+    return this.http.get<GroupSubevents[]>(`${this.apiUrl}/${event}`);
+  }
+
+
+  constructor(private http: HttpClient) {}
 }

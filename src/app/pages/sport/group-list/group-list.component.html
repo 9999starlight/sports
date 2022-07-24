@@ -1,0 +1,43 @@
+<app-overlay *ngIf="showLoading$ | async">
+  <app-loader></app-loader>
+</app-overlay>
+<header>
+  <button type="button" class="btn-brand">Tutti</button>
+</header>
+<ul *ngIf="(groupList$ | async)?.results as list">
+  <li *ngFor="let item of list">
+    <app-expandable
+      [expandableName]="item.Name"
+      [headerText]="item.Name"
+      [expandableWrapperClass]="'bg-dark-800'"
+      [headerIcon]="item.Name.toLowerCase()"
+      [id]="item.Id"
+      [group]="item.Name.toLowerCase()"
+      [isStatic]="false"
+    >
+      <ul *ngIf="item.Events.length" class="bg-dark-900">
+        <li *ngFor="let event of item.Events" class="flex pdx-2">
+          <!-- /subevents-mondiali -->
+          <a
+            [routerLink]="
+              event.Id === 1648275
+                ? ['/sports/' + routeParams.group, 'subevents-mondiali']
+                : ['/sports/' + routeParams.group]
+            "
+            class="flex content-list-item text-light w-100"
+            tabindex="0"
+          >
+            <span>{{ event.Name }}</span>
+            <span class="flex flex-center">
+              <span class="inline-block mgr-2">{{ event.NumSubevents }}</span>
+              <span
+                class="icon-18 bg-dark-600 icon-angle-up rotate-right inline-block"
+              >
+              </span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </app-expandable>
+  </li>
+</ul>

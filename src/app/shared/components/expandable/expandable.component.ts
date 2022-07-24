@@ -17,6 +17,7 @@ export class ExpandableComponent implements OnInit {
   @Input('expandableWrapperClass') expandableWrapperClass = '';
   @Input('isLarge') isLarge = false;
   @Input('isStatic') isStatic = false;
+  @Input('group') group = '';
 
   toggleDropdown() {
     this.isOpen = !this.isOpen;

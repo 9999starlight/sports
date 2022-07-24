@@ -40,6 +40,7 @@ $icons: (
   "search": "../../assets/search.svg",
   "stats": "../../assets/stats.svg",
   "tennis": "../../assets/tennis.svg",
+  "star": "../../assets/star.svg",
 );
 
 @each $iconName, $iconPath in $icons {
