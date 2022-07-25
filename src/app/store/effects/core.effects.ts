@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY } from 'rxjs';
-import { map, mergeMap, catchError, tap, exhaustMap } from 'rxjs/operators';
+import { map, catchError, tap, exhaustMap } from 'rxjs/operators';
 import { FetchService } from 'src/app/shared/services/fetch.service';
 import * as CoreActions from '../actions/core.actions';
 import { Store } from '@ngrx/store';
 import { loaderStatus } from '../actions/core.actions';
 import {
+  ActiveMarketsMondiali,
+  ActiveOddGroupsMondiali,
   EventQuotas,
   GroupList,
   GroupSubevents,
   SportsList,
   TopEvents,
 } from 'src/app/shared/interfaces/interfaces';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class SharedEffects {
@@ -83,6 +83,53 @@ export class SharedEffects {
     );
   });
 
+  loadActiveMarkets$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(CoreActions.activeMarketsGet),
+      tap(() => {
+        this.store.dispatch(loaderStatus({ loaderVisible: true }));
+      }),
+      exhaustMap(() => {
+        return this.fetchService.fetchActiveMarketsMondiali().pipe(
+          map((res: ActiveMarketsMondiali[]) => {
+            this.store.dispatch(loaderStatus({ loaderVisible: false }));
+            const results = res;
+            return CoreActions.activeMarketsGetSuccess({ results });
+          }),
+          catchError((err) => {
+            this.store.dispatch(loaderStatus({ loaderVisible: false }));
+            throw Error(err.message);
+          })
+        );
+      })
+    );
+  });
+
+
+  loadActiveOddGroups$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(CoreActions.activeOddGroupsMondiali),
+      tap(() => {
+        this.store.dispatch(loaderStatus({ loaderVisible: true }));
+      }),
+      exhaustMap(() => {
+        return this.fetchService.fetchActiveOddGroupsMondiali().pipe(
+          map((res: ActiveOddGroupsMondiali[]) => {
+            this.store.dispatch(loaderStatus({ loaderVisible: false }));
+            const results = res;
+            console.log('effects res: ', results)
+            return CoreActions.activeOddGroupsMondialiSuccess({ results });
+          }),
+          catchError((err) => {
+            this.store.dispatch(loaderStatus({ loaderVisible: false }));
+            throw Error(err.message);
+          })
+        );
+      })
+    );
+  });
+
+
   loadEventQuotas$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(CoreActions.eventQuotasGet),
@@ -131,7 +178,6 @@ export class SharedEffects {
   constructor(
     private actions$: Actions,
     private fetchService: FetchService,
-    private store: Store,
-    private router: Router
+    private store: Store
   ) {}
 }

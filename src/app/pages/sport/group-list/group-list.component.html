@@ -17,7 +17,7 @@
     >
       <ul *ngIf="item.Events.length" class="bg-dark-900">
         <li *ngFor="let event of item.Events" class="flex pdx-2">
-          <!-- /subevents-mondiali -->
+          <!-- /subevents-mondiali add hardcoded param instead of ID -->
           <a
             [routerLink]="
               event.Id === 1648275

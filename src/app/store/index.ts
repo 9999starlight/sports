@@ -1,6 +1,6 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import {  sharedAppState } from './state';
+import { sharedAppState } from './state';
 import { appSharedReducer } from './reducers/core.reducer';
 import { APP_SELECTORS } from './selectors/core.selectors';
 

@@ -1,0 +1,48 @@
+<app-overlay *ngIf="showLoading$ | async">
+  <app-loader></app-loader>
+</app-overlay>
+
+<div class="active-odd-groups-wrapper bg-dark">
+  <header class="bg-brand pdy-4 pdx-2">
+    <button
+      type="button"
+      class="flex text-dark text-regular text-bold"
+      title="Back"
+      (click)="onBackClick()"
+    >
+      <span
+        class="icon-22 bg-dark-900 icon-angle-up rotate-left inline-block"
+      ></span>
+      Back
+    </button>
+  </header>
+  <label for="search" class="relative flex radius-4 w-100">
+    <button type="button" class="input-left-btn h-100" title="Serch">
+      <span class="icon-22 bg-dark-700 icon-search inline-block"></span>
+    </button>
+    <input class="pdl-4 pdy-1 w-100" id="search" type="search" />
+    <button type="button" class="input-right-btn h-100" title="Clear field">
+      <span class="icon-22 bg-dark-700 icon-clear inline-block"></span>
+    </button>
+  </label>
+  <ul *ngIf="(activeOddGroups$ | async)?.results as groups">
+    <li *ngFor="let item of groups">
+      <app-expandable
+        [expandableName]="item.Name"
+        [headerText]="item.Name"
+        [headerSubtitle]="item.Markets.length + ''"
+        [expandableWrapperClass]="'bg-dark-800'"
+        [isInitiallyOpen]="true"
+      >
+        <ul class="bg-dark-900">
+          <li
+            *ngFor="let market of item.Markets"
+            class="content-list-item flex pdx-4"
+          >
+            {{ market.Name }}
+          </li>
+        </ul>
+      </app-expandable>
+    </li>
+  </ul>
+</div>

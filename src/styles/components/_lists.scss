@@ -4,7 +4,17 @@ li,
 }
 
 .card-wrapper {
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-  grid-column-gap: 5px;
-  //place-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-column-gap: 5px; 
+  justify-items: center;
+  padding: 1rem 0.5rem;
 }
+
+.content-list-item {
+  min-height: 4.3rem;
+  @include alignment($justify: space-between, $align: center);
+}
+
+
+
+

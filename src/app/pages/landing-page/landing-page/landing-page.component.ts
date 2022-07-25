@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchService } from 'src/app/shared/services/fetch.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store';
 import { sportsListGet, topEventsGet } from 'src/app/store/actions/core.actions';
@@ -22,7 +21,6 @@ export class LandingPageComponent implements OnInit {
   showLoading$: Observable<boolean> | undefined;
 
   constructor(
-    private fetchService: FetchService,
     private store: Store<AppState>
   ) {}
 
@@ -32,7 +30,5 @@ export class LandingPageComponent implements OnInit {
     this.store.dispatch(sportsListGet());
     this.topEvents$ = this.store.select(getTopEvents)
     this.sportsList$ = this.store.select(getSportsList);
-
-    this.topEvents$.subscribe(res => console.log('RES TOP EVENTS: ', res))
   }
 }

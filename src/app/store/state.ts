@@ -1,4 +1,6 @@
 import {
+  ActiveMarketsMondiali,
+  ActiveOddGroupsMondiali,
   EventQuotas,
   GroupList,
   GroupSubevents,
@@ -6,7 +8,6 @@ import {
   SportsList,
   TopEvents,
 } from '../shared/interfaces/interfaces';
-import { ListState } from './interfaces/state.models';
 
 export interface sharedAppState {
   loader: LoaderState;
@@ -14,6 +15,8 @@ export interface sharedAppState {
   sportsList: { results: SportsList[] };
   groupList: { results: GroupList[] };
   eventsList: { results: GroupSubevents[] };
+  activeMarketsMondIali: { results: ActiveMarketsMondiali[] };
+  activeOddGroups: { results: ActiveOddGroupsMondiali[] };
   eventQuotas: { result: EventQuotas | null };
 }
 
@@ -38,7 +41,15 @@ export const initialAppState: sharedAppState = {
     results: [],
   },
 
+  activeMarketsMondIali: {
+    results: [],
+  },
+
+  activeOddGroups: {
+    results: []
+  },
+
   eventQuotas: {
-    result: null
-  }
+    result: null,
+  },
 };

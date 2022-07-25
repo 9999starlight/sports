@@ -28,3 +28,11 @@ export const getTopEvents = createSelector(
   getAppState,
   (state) => state.topEvents
 );
+export const getActiveMarketsMondiali = createSelector(
+  getAppState,
+  (state) => state.activeMarketsMondIali
+);
+export const getActiveOddGroups = createSelector(
+  getAppState,
+  (state) => state.activeOddGroups
+);

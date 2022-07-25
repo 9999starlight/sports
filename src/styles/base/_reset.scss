@@ -33,10 +33,6 @@ input[type="button"] {
   cursor: pointer;
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
 input[type="search"]:focus {
   outline: 1px solid $light-primary;
 }
@@ -44,10 +40,6 @@ input[type="search"]:focus {
 button:disabled,
 input[type="button"]:disabled {
   cursor: not-allowed;
-}
-
-input.ng-touched.ng-invalid  {
-  border: 1px solid $error-primary-color;
 }
 
 a {

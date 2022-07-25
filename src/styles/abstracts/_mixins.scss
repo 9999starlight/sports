@@ -150,19 +150,6 @@
   }
 }
 
-// mixin background-color & color
-@mixin box-style($bg-color: false, $color: false, $border: false) {
-  @if ($bg-color) {
-    background-color: $bg-color;
-  }
-  @if ($color) {
-    color: $color;
-  }
-  @if ($border) {
-    border: $border;
-  }
-}
-
 // SVG that allows coloring
 @mixin svg-container($image: false, $display: false, $bg-color: false) {
   @if ($image) {

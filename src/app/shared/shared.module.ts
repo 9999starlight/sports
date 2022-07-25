@@ -18,7 +18,6 @@ import { RouterModule } from '@angular/router';
     LogoComponent,
     LoaderComponent,
     OverlayComponent,
-    
   ],
   imports: [
     CommonModule,
@@ -30,7 +29,7 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     HeaderComponent,
     LoaderComponent,
-    OverlayComponent
+    OverlayComponent,
   ]
 })
 export class SharedModule { }

@@ -1,4 +1,4 @@
-@import 'mixins';
+@import "mixins";
 
 :host {
   grid-area: footer;
@@ -6,6 +6,6 @@
 }
 
 footer {
- @include alignment($display: flex, $justify: center);
- padding: 1rem;
+  @include alignment($display: flex, $justify: center);
+  padding: 1rem;
 }

@@ -1,12 +1,13 @@
 import { createAction, props } from '@ngrx/store';
 import {
+  ActiveMarketsMondiali,
+  ActiveOddGroupsMondiali,
   EventQuotas,
   GroupList,
   GroupSubevents,
   SportsList,
   TopEvents,
 } from 'src/app/shared/interfaces/interfaces';
-import { ListState } from '../interfaces/state.models';
 
 export const loaderStatus = createAction(
   '[Loader Status] Change Loader Status',
@@ -50,6 +51,26 @@ export const sportSubeventsGetSuccess = createAction(
   '[Group Subevents Component] Get Group Subevents Success',
   props<{ results: GroupSubevents[] }>()
 );
+
+export const activeMarketsGet = createAction(
+  '[Group Subevents Component Menu] Get Active Markets',
+);
+
+export const activeMarketsGetSuccess = createAction(
+  '[Group Subevents Component Menu] Get Active Markets Success',
+  props<{ results: ActiveMarketsMondiali[] }>()
+);
+
+export const activeOddGroupsMondiali = createAction(
+  '[Group Subevents Component Active Odd Groups] Get Active Odd Groups',
+);
+
+export const activeOddGroupsMondialiSuccess = createAction(
+  '[Group Subevents Component Active Odd Groups] Get Active Odd Groups Success',
+  props<{ results: ActiveOddGroupsMondiali[] }>()
+);
+
+
 
 export const eventQuotasGet = createAction(
   '[Group Subevents Component] Get Event Quotas',

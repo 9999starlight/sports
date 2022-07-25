@@ -1,13 +1,7 @@
 import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
   createReducer,
-  on,
-  createSelector,
-  MetaReducer,
+  on
 } from '@ngrx/store';
-import { environment } from '../../../environments/environment';
 import { initialAppState } from '../state';
 import * as CoreActions from '../actions/core.actions';
 
@@ -32,6 +26,14 @@ export const appSharedReducer = createReducer(
     return { ...state, eventsList: { results } };
   }),
 
+  on(CoreActions.activeMarketsGetSuccess, (state, { results }) => {
+    return { ...state, activeMarketsMondIali: { results } };
+  }),
+
+  on(CoreActions.activeOddGroupsMondialiSuccess, (state, { results }) => {
+    return { ...state, activeOddGroups: { results } };
+  }),
+
   on(CoreActions.eventQuotasGetSuccess, (state, { result }) => {
     return { ...state, eventQuotas: { result } };
   }),
@@ -39,6 +41,4 @@ export const appSharedReducer = createReducer(
   on(CoreActions.topEventsGetSuccess, (state, { results }) => {
     return { ...state, topEvents: { results } };
   })
-
-  //sportSubeventsGetSuccess
 );

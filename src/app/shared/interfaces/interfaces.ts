@@ -105,6 +105,15 @@ export interface GroupSubevents {
   GroupOrder: number;
 }
 
+export interface ActiveMarketsMondiali {
+  Id: number;
+  Name: string;
+  Order: number;
+  IsNewMarket: boolean;
+  ShortName: string;
+  NumberOfParticipants: number;
+}
+
 export interface GroupMarketsSingleMarket {
   Id: number;
   Name: string;
@@ -142,4 +151,19 @@ export interface EventQuotas {
   Playabilities: number[];
   GroupedMarkets: GroupMarkets[];
   SottoEventoTypeId: number;
+}
+
+export interface ActiveOddGroupsMarkets {
+  Id: number;
+  Name: string;
+  Order: number;
+  IsNewMarket: boolean;
+  ShortName: string | null;
+}
+
+export interface ActiveOddGroupsMondiali {
+  Name: string;
+  Id: number;
+  Order: number;
+  Markets: ActiveOddGroupsMarkets[];
 }

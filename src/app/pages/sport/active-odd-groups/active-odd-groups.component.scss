@@ -1,0 +1,37 @@
+@import "variables", "mixins";
+
+.active-odd-groups-wrapper {
+  @include positioning($position: absolute, $top: 0, $left: 0);
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  margin-bottom: 1rem;
+  border-top: 1px solid $dark-primary;
+}
+
+header button {
+  align-items: center;
+}
+
+label {
+  border: 1px solid $dark-800;
+  justify-content: space-between;
+  align-items: center;
+  width: 98%;
+  margin: 1.5rem auto;
+}
+
+input {
+  display: inline-block;
+  height: 4.2rem;
+  background: $dark-primary;
+  color: $light-primary;
+}
+
+.input-right-btn,
+.input-left-btn {
+  width: 4.2rem;
+  height: 4.2rem;
+}

@@ -14,6 +14,7 @@ export class ExpandableComponent implements OnInit {
   @Input('expandableContentClass') expandableContentClass = '';
   @Input('expandableWrapperClass') expandableWrapperClass = '';
   @Input('isStatic') isStatic = false;
+  @Input('isInitiallyOpen') isInitiallyOpen = false;
   @Input('group') group = '';
 
   toggleDropdown() {
@@ -22,6 +23,9 @@ export class ExpandableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (!this.isStatic && this.isInitiallyOpen) {
+      this.isOpen = true;
+    }
   }
 
 }

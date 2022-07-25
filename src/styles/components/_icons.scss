@@ -9,7 +9,7 @@
 $icon-sizes: (
   "18": 1.8,
   "22": 2.2,
-  "52": 5,
+  "32": 3.2,
 );
 
 @each $iconName, $iconSize in $icon-sizes {
@@ -27,13 +27,6 @@ $icon-sizes: (
   mask-size: cover;
 }
 
-.rotate-right {
-  transform: rotate(90deg);
-}
-
-.rounded {
-  border-radius: 50%;
-}
 
 $icons: (
   "angle-up": "../../assets/angle-up.svg",
@@ -45,6 +38,7 @@ $icons: (
   "stats": "../../assets/stats.svg",
   "tennis": "../../assets/tennis.svg",
   "star": "../../assets/star.svg",
+  "clear": "../../assets/clear.svg",
 );
 
 @each $iconName, $iconPath in $icons {

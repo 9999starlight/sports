@@ -1,16 +1,22 @@
-// Loop trough sizes map to create border-radius classes - always in px!
-
 // border-radius
-$sizes: 0, 2, 4, 6;
+$sizes: 4, 6;
 @each $size in $sizes {
   .radius-#{$size} {
     border-radius: #{$size} + "px";
   }
 }
 
-/*.round-circle {
+.border-light {
+  border: 1px solid $light-primary;
+}
+
+.border-brand-secondary {
+  border: 1px solid $brand-primary-color;
+}
+
+.round-circle {
   border-radius: 50%;
-}*/
+}
 
 
 

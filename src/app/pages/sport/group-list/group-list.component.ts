@@ -15,7 +15,6 @@ import { Endpoints } from 'src/app/shared/endpoints/endpoints';
 export class GroupListComponent implements OnInit {
   groupList$!: Observable<{results: GroupList[]}> | undefined;
   showLoading$: Observable<boolean> | undefined;
-  list!: GroupList[]
   routeParams!: any
   subeventsMondiali = ''
   constructor(private store: Store, private route: ActivatedRoute) { 
@@ -24,12 +23,9 @@ export class GroupListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //console.log('endpoints: ', Endpoints.SubeventsMondiali);
     this.subeventsMondiali = Endpoints.SubeventsMondiali;
     this.showLoading$ = this.store.select(getLoading);
     this.store.dispatch(sportGroupGet(this.routeParams));
     this.groupList$ = this.store.select(getGroupList);
-
-    //this.groupList$?.subscribe(res => {console.log('sport group:', res.results)})
   }
 }

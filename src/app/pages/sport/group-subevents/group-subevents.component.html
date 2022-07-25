@@ -1,6 +1,39 @@
 <app-overlay *ngIf="showLoading$ | async">
   <app-loader></app-loader>
 </app-overlay>
+<header class="subheader pda-4 flex relative">
+  <div class="slider-wrapper relative w-100">
+    <div class="slider bg-dark750">
+      <ul
+        *ngIf="(activeMarkets$ | async)?.results as activeMarkets"
+        class="slide-track"
+      >
+        <li
+          *ngFor="let activeMarket of activeMarkets; let first = first"
+          class="mgx-2"
+        >
+          <button
+            type="button"
+            class="pdx-4 radius-4 h-100"
+            [ngClass]="first ? 'text-dark bg-brand' : 'bg-dark-800 text-light'"
+          >
+            {{ activeMarket.Name }}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="absolute active-odds-btn bg-dark-800"
+    title="Active Odd Groups Mondiali"
+    (click)="showOddGroups()"
+  >
+    <span
+      class="icon-22 bg-dark-600 icon-angle-up rotate-right inline-block"
+    ></span>
+  </button>
+</header>
 <ul *ngIf="(eventsList$ | async)?.results as eventsList">
   <li *ngFor="let item of eventsList">
     <app-expandable
@@ -9,6 +42,7 @@
       [headerSubtitle]="item.NumSubevents + ''"
       [expandableWrapperClass]="'bg-dark-800'"
       [headerIcon]="item.SportName.toLowerCase()"
+      [isInitiallyOpen]="true"
       [id]="item.Id"
     >
       <!-- CONTENT -->
@@ -23,9 +57,9 @@
               [routerLink]="
                 event.Id === 120718887
                   ? [
-                      '/sports/' +
-                        routeParams.group, routeParams.subevent,
-                        matchQuotas
+                      '/sports/' + routeParams.group,
+                      routeParams.subevent,
+                      matchQuotas
                     ]
                   : [
                       '/sports/' +
@@ -46,7 +80,7 @@
               ></span>
             </a>
             <ng-container *ngFor="let market of event.Markets">
-              <div class="card-wrapper flex">
+              <div class="card-wrapper grid">
                 <app-card
                   *ngFor="let odd of market.Odds"
                   [selection]="odd.Selection"
@@ -60,3 +94,9 @@
     </app-expandable>
   </li>
 </ul>
+
+<ng-container *ngIf="isActiveOddGroupsShown">
+  <app-active-odd-groups
+    (close)="toggleisActiveOddGroupsShown()"
+  ></app-active-odd-groups>
+</ng-container>

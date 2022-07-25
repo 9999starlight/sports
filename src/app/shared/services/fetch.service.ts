@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Endpoints } from '../endpoints/endpoints';
-import { EventQuotas, GroupList, GroupSubevents, SportsList, TopEvents } from '../interfaces/interfaces';
+import { ActiveMarketsMondiali, ActiveOddGroupsMondiali, EventQuotas, GroupList, GroupSubevents, SportsList, TopEvents } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +23,14 @@ export class FetchService {
 
   fetchSubevents(event: string) {
     return this.http.get<GroupSubevents[]>(`${this.apiUrl}/${event}`);
+  }
+
+  fetchActiveMarketsMondiali() {
+    return this.http.get<ActiveMarketsMondiali[]>(`${this.apiUrl}/${Endpoints.ActiveMarketsMondiali}`);
+  }
+
+  fetchActiveOddGroupsMondiali() {
+    return this.http.get<ActiveOddGroupsMondiali[]>(`${this.apiUrl}/${Endpoints.ActiveOddgroupsMondiali}`);
   }
 
   fetchEventQuotas(quotas: string) {

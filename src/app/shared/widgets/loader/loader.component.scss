@@ -6,7 +6,12 @@
 }
 
 .loader {
-  @include positioning($position: absolute, $top: 50%, $left: 50%, $transform: translate(-50%, -50%));
+  @include positioning(
+    $position: absolute,
+    $top: 50%,
+    $left: 50%,
+    $transform: translate(-50%, -50%)
+  );
   @include box-size($width: 5rem, $height: 5rem);
   border: 6px solid darken(rgba($brand-primary-color, 0.5), 30%);
   border-top: 6px solid darken($brand-primary-color, 10%);

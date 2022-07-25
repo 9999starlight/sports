@@ -27,7 +27,6 @@ span img {
 
 .expandable-content {
   @include box-size($width: 100%);
-  /*padding: 1rem 0;*/
   text-align: center;
   overflow: auto;
 }
