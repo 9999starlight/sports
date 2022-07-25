@@ -18,7 +18,7 @@ const routes: Routes = [
     component: GroupSubeventsComponent
   },
   {
-    path: ':quotas',
+    path: ':subevent/:quotas',
     component: EventQuotasComponent
   },
   

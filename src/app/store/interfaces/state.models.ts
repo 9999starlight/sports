@@ -1,4 +1,5 @@
 import {
+  EventQuotas,
   GroupList,
   GroupSubevents,
   SportsList,
@@ -7,7 +8,7 @@ import {
 export interface ListState {
   results: SportsList[];
 }
-
+/*
 export interface GroupListResults {
   results: GroupList[];
 }
@@ -15,3 +16,7 @@ export interface GroupListResults {
 export interface SubeventsResult {
   results: GroupSubevents[];
 }
+
+export interface QuotasSN {
+  result: EventQuotas;
+}*/

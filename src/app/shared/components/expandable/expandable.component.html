@@ -13,20 +13,18 @@
       (keyup.enter)="isOpen = true"
       (keyup.esc)="isOpen = false"
     >
-      <!--<p>-->
-        <span class="flex flex-center">
-          <span *ngIf="headerIcon" [class]="headerIcon"></span>
-          <span class="flex flex-column">
-            <span>{{ headerText }}</span>
-            <span *ngIf="headerSubtitle">{{ headerSubtitle }}</span>
-          </span>
+      <span class="flex flex-center">
+        <span *ngIf="headerIcon" [class]="headerIcon"></span>
+        <span class="flex flex-column">
+          <span>{{ headerText }}</span>
+          <span *ngIf="headerSubtitle">{{ headerSubtitle }}</span>
         </span>
-      <!--</p>-->
-        <span
-          class="icon-18 bg-dark-600 inline-block"
-          ngClass="{{ isOpen ? 'icon-angle-up' : 'icon-angle-down' }}"
-        >
-        </span>
+      </span>
+      <span
+        class="icon-18 bg-dark-600 inline-block"
+        ngClass="{{ isOpen ? 'icon-angle-up' : 'icon-angle-down' }}"
+      >
+      </span>
     </div>
     <div
       *ngIf="isOpen"
@@ -37,7 +35,11 @@
     </div>
   </ng-container>
   <ng-container *ngIf="isStatic">
-    <a [routerLink]="['/sports', 'grouplist-'+group]" class="btn-expandable flex text-light" tabindex="0">
+    <a
+      [routerLink]="group ? ['/sports', 'grouplist-' + group]  : ''"
+      class="btn-expandable flex text-light"
+      tabindex="0"
+    >
       <span class="flex">
         <span class="inline-block mgr-2">
           <ng-container

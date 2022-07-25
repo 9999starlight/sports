@@ -31,12 +31,16 @@ $icon-sizes: (
   transform: rotate(90deg);
 }
 
+.rounded {
+  border-radius: 50%;
+}
+
 $icons: (
   "angle-up": "../../assets/angle-up.svg",
   "angle-down": "../../assets/angle-down.svg",
   "basket": "../../assets/basket.svg",
   "calcio": "../../assets/calcio.svg",
-  "internacionali": "../../assets/internacionali.svg",
+  "internazionali": "../../assets/internazionali.svg",
   "search": "../../assets/search.svg",
   "stats": "../../assets/stats.svg",
   "tennis": "../../assets/tennis.svg",

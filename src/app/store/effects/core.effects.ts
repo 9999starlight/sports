@@ -6,7 +6,13 @@ import { FetchService } from 'src/app/shared/services/fetch.service';
 import * as CoreActions from '../actions/core.actions';
 import { Store } from '@ngrx/store';
 import { loaderStatus } from '../actions/core.actions';
-import { GroupList, GroupSubevents, SportsList } from 'src/app/shared/interfaces/interfaces';
+import {
+  EventQuotas,
+  GroupList,
+  GroupSubevents,
+  SportsList,
+  TopEvents,
+} from 'src/app/shared/interfaces/interfaces';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -26,8 +32,6 @@ export class SharedEffects {
           }),
           catchError((err) => {
             this.store.dispatch(loaderStatus({ loaderVisible: false }));
-
-            console.log('effects error: ', err);
             throw Error(err.message);
           })
         );
@@ -46,12 +50,10 @@ export class SharedEffects {
           map((res: GroupList[]) => {
             this.store.dispatch(loaderStatus({ loaderVisible: false }));
             const results = res;
-            console.log('group list effects: ', results)
             return CoreActions.sportGroupGetSuccess({ results });
           }),
           catchError((err) => {
             this.store.dispatch(loaderStatus({ loaderVisible: false }));
-            console.log('effects error: ', err);
             throw Error(err.message);
           })
         );
@@ -70,18 +72,61 @@ export class SharedEffects {
           map((res: GroupSubevents[]) => {
             this.store.dispatch(loaderStatus({ loaderVisible: false }));
             const results = res;
-            console.log('EVENTS list effects: ', results)
             return CoreActions.sportSubeventsGetSuccess({ results });
           }),
           catchError((err) => {
             this.store.dispatch(loaderStatus({ loaderVisible: false }));
-            console.log('effects error: ', err);
             throw Error(err.message);
           })
         );
       })
     );
   });
+
+  loadEventQuotas$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(CoreActions.eventQuotasGet),
+      tap(() => {
+        this.store.dispatch(loaderStatus({ loaderVisible: true }));
+      }),
+      exhaustMap((group) => {
+        return this.fetchService.fetchEventQuotas(group.group).pipe(
+          map((res: EventQuotas) => {
+            this.store.dispatch(loaderStatus({ loaderVisible: false }));
+            const result = res;
+            return CoreActions.eventQuotasGetSuccess({ result });
+          }),
+          catchError((err) => {
+            this.store.dispatch(loaderStatus({ loaderVisible: false }));
+            throw Error(err.message);
+          })
+        );
+      })
+    );
+  });
+
+  loadTopEvents$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(CoreActions.topEventsGet),
+      tap(() => {
+        this.store.dispatch(loaderStatus({ loaderVisible: true }));
+      }),
+      exhaustMap(() => {
+        return this.fetchService.fetchTopEvents().pipe(
+          map((res: TopEvents[]) => {
+            this.store.dispatch(loaderStatus({ loaderVisible: false }));
+            const results = res;
+            return CoreActions.topEventsGetSuccess({ results });
+          }),
+          catchError((err) => {
+            this.store.dispatch(loaderStatus({ loaderVisible: false }));
+            throw Error(err.message);
+          })
+        );
+      })
+    );
+  });
+
 
   constructor(
     private actions$: Actions,

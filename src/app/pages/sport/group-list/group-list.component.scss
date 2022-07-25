@@ -1,5 +1,5 @@
 @import "variables", "mixins";
 .content-list-item {
-	min-height: 4.3rem;
-	@include alignment($justify: space-between, $align: center);
+  min-height: 4.3rem;
+  @include alignment($justify: space-between, $align: center);
 }

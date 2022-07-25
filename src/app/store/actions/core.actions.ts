@@ -1,7 +1,12 @@
 import { createAction, props } from '@ngrx/store';
-import { GroupList, GroupSubevents, SportsList } from 'src/app/shared/interfaces/interfaces';
+import {
+  EventQuotas,
+  GroupList,
+  GroupSubevents,
+  SportsList,
+  TopEvents,
+} from 'src/app/shared/interfaces/interfaces';
 import { ListState } from '../interfaces/state.models';
-
 
 export const loaderStatus = createAction(
   '[Loader Status] Change Loader Status',
@@ -17,9 +22,18 @@ export const sportsListGetSuccess = createAction(
   props<{ results: SportsList[] }>()
 );
 
+export const topEventsGet = createAction(
+  '[Landing Page Component Subheader] Get Top Events'
+);
+
+export const topEventsGetSuccess = createAction(
+  '[Landing Page Component Subheader] Get Top Events Success',
+  props<{ results: TopEvents[] }>()
+);
+
 export const sportGroupGet = createAction(
   '[Sport Page Component] Get Sport Group List',
-  props<{group: string}>()
+  props<{ group: string }>()
 );
 
 export const sportGroupGetSuccess = createAction(
@@ -29,10 +43,20 @@ export const sportGroupGetSuccess = createAction(
 
 export const sportSubeventsGet = createAction(
   '[Group Subevents Component] Get Group Subevents',
-  props<{group: string}>()
+  props<{ group: string }>()
 );
 
 export const sportSubeventsGetSuccess = createAction(
   '[Group Subevents Component] Get Group Subevents Success',
   props<{ results: GroupSubevents[] }>()
+);
+
+export const eventQuotasGet = createAction(
+  '[Group Subevents Component] Get Event Quotas',
+  props<{ group: string }>()
+);
+
+export const eventQuotasGetSuccess = createAction(
+  '[EventQuotas Component] Get Event Quotas Success',
+  props<{ result: EventQuotas }>()
 );

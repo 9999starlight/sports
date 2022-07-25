@@ -1,8 +1,8 @@
 <app-overlay *ngIf="showLoading$ | async">
   <app-loader></app-loader>
 </app-overlay>
-<header>
-  <button type="button" class="btn-brand">Tutti</button>
+<header class="subheader pda-4 flex">
+  <button type="button" class="btn-brand mgl-auto">Tutti</button>
 </header>
 <ul *ngIf="(groupList$ | async)?.results as list">
   <li *ngFor="let item of list">
@@ -21,7 +21,7 @@
           <a
             [routerLink]="
               event.Id === 1648275
-                ? ['/sports/' + routeParams.group, 'subevents-mondiali']
+                ? ['/sports/' + routeParams.group, subeventsMondiali]
                 : ['/sports/' + routeParams.group]
             "
             class="flex content-list-item text-light w-100"

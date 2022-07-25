@@ -13,12 +13,6 @@ export interface SportsList {
   Order: number;
 }
 
-/*export interface GroupParams {
-  name: string;
-  id: number;
-  antepost: number;
-}*/
-
 export interface GroupListEvent {
   Id: number;
   Name: string;
@@ -42,6 +36,17 @@ export interface GroupList {
   SportId: number;
   Antepost: number;
   Events: GroupListEvent[];
+}
+
+export interface TopEvents {
+  Id: number;
+  Order: number;
+  Name: string;
+  NumSubevents: number;
+  SportId: number;
+  SportName: string;
+  GroupId: number;
+  GroupName: string;
 }
 
 export interface Odds {
@@ -98,4 +103,43 @@ export interface GroupSubevents {
   Playabilities: number[];
   Subevents: Subevents[];
   GroupOrder: number;
+}
+
+export interface GroupMarketsSingleMarket {
+  Id: number;
+  Name: string;
+  Order: number;
+  Odds: Odds[];
+  IsNewMarket: boolean;
+  ShortName: null | string;
+  NumberOfParticipants: number;
+  ParticipantOddsCount: number;
+}
+
+export interface GroupMarkets {
+  Name: string;
+  Id: number;
+  Order: number;
+  Markets: GroupMarketsSingleMarket[];
+  HasParticipants: boolean;
+  NumberOfParticipants: number;
+  ParticipantOddsCount: number;
+}
+
+export interface EventQuotas {
+  Id: number;
+  Name: string;
+  PublicationCode: number;
+  StartTimeUtc: string; // date
+  BetradarMatchId: number;
+  BetradarMatchUid: string;
+  NumQuote: number;
+  EventId: number;
+  EventTypeId: number;
+  EventName: string;
+  SportName: string;
+  GroupName: string;
+  Playabilities: number[];
+  GroupedMarkets: GroupMarkets[];
+  SottoEventoTypeId: number;
 }

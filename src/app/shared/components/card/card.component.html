@@ -1,4 +1,12 @@
-<div class="block radius-4">
-	<span class="block bg-dark h-50 text-light">{{ selection }}</span>
-	<span class="block bg-dark-600 h-50 text-dark">{{ value }}</span>
+<div
+  class="block radius-4 mgb-4"
+  [ngClass]="!isSelected ? 'border-light' : 'border-brand-secondary'"
+  (click)="onSelectionBet()"
+>
+  <span class="block bg-dark h-50 text-light">{{ selection }}</span>
+  <span
+    class="block h-50 text-dark"
+    [ngClass]="!isSelected ? 'bg-dark-600' : 'bg-brand-secondary'"
+    >{{ value }}</span
+  >
 </div>

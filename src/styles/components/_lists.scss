@@ -2,3 +2,9 @@ li,
 .event-date {
   border-bottom: 1px solid $dark-primary;
 }
+
+.card-wrapper {
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  grid-column-gap: 5px;
+  //place-items: center;
+}

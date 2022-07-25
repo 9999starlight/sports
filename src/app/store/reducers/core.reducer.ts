@@ -30,6 +30,14 @@ export const appSharedReducer = createReducer(
 
   on(CoreActions.sportSubeventsGetSuccess, (state, { results }) => {
     return { ...state, eventsList: { results } };
+  }),
+
+  on(CoreActions.eventQuotasGetSuccess, (state, { result }) => {
+    return { ...state, eventQuotas: { result } };
+  }),
+
+  on(CoreActions.topEventsGetSuccess, (state, { results }) => {
+    return { ...state, topEvents: { results } };
   })
 
   //sportSubeventsGetSuccess

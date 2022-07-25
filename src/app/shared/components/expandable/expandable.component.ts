@@ -7,15 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ExpandableComponent implements OnInit {
   isOpen = false;
-  @Input('isStandalone') isStandalone = false;
   @Input('expandableName') expandableName = '';
   @Input('headerText') headerText = '';
   @Input('headerSubtitle') headerSubtitle = '';
   @Input('headerIcon') headerIcon = '';
-  @Input('expandableId') expandableId!: number;
   @Input('expandableContentClass') expandableContentClass = '';
   @Input('expandableWrapperClass') expandableWrapperClass = '';
-  @Input('isLarge') isLarge = false;
   @Input('isStatic') isStatic = false;
   @Input('group') group = '';
 

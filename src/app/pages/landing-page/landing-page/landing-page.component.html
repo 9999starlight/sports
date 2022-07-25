@@ -1,7 +1,24 @@
 <app-overlay *ngIf="showLoading$ | async">
   <app-loader></app-loader>
 </app-overlay>
-
+<header class="subheader bg-dark">
+<ul *ngIf="(topEvents$ | async)?.results as topEvents" class="bg-dark events-list">
+  
+  <li *ngFor="let evt of topEvents" class="flextext-light w-100">
+      <app-expandable
+        [expandableName]="evt.Name"
+        [headerText]="evt.Name"
+        [headerSubtitle]="evt.NumSubevents + ''"
+        [expandableWrapperClass]="'bg-dark pdx-4'"
+        [id]="evt.Id"
+        [isStatic]="true"
+      ></app-expandable>
+  </li>
+</ul>
+</header>
+<figure>
+  <img src="../../../../assets/football.jpg" alt="football">
+</figure>
 <ng-container *ngIf="(sportsList$ | async)?.results as list">
   <ul class="bg-dark-900">
     <li *ngFor="let item of list">
@@ -19,18 +36,3 @@
   </ul>
 </ng-container>
 
-<!--<app-expandable
-  [expandableName]="item.group"
-  [headerText]="item.group"
-  [expandableContentClass]="'bg-dark850'"
-  [expandableWrapperClass]="'bg-dark750'"
-  [isLarge]="true"
->
-  <ul class="expandable-list">
-    <li *ngFor="let linkData of item.linkGroup" class="list-item">
-      <a [href]="linkData.link" class="block w-100 txt-light">{{
-        linkData.title
-      }}</a>
-    </li>
-  </ul>
-</app-expandable>-->

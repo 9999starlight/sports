@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FetchService } from 'src/app/shared/services/fetch.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store';
-import { sportsListGet } from 'src/app/store/actions/core.actions';
+import { sportsListGet, topEventsGet } from 'src/app/store/actions/core.actions';
 import {
   getLoading,
   getSportsList,
+  getTopEvents,
 } from 'src/app/store/selectors/core.selectors';
 import { Observable } from 'rxjs';
-import { SportsList } from 'src/app/shared/interfaces/interfaces';
+import { SportsList, TopEvents } from 'src/app/shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-landing-page',
@@ -17,6 +18,7 @@ import { SportsList } from 'src/app/shared/interfaces/interfaces';
 })
 export class LandingPageComponent implements OnInit {
   sportsList$!: Observable<{ results: SportsList[] }> | undefined;
+  topEvents$!: Observable<{ results: TopEvents[] | null }> | undefined;
   showLoading$: Observable<boolean> | undefined;
 
   constructor(
@@ -26,7 +28,11 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.showLoading$ = this.store.select(getLoading);
+    this.store.dispatch(topEventsGet());
     this.store.dispatch(sportsListGet());
+    this.topEvents$ = this.store.select(getTopEvents)
     this.sportsList$ = this.store.select(getSportsList);
+
+    this.topEvents$.subscribe(res => console.log('RES TOP EVENTS: ', res))
   }
 }

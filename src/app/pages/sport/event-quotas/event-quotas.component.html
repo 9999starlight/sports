@@ -1,1 +1,40 @@
-<p>event-quotas works!</p>
+<app-overlay *ngIf="showLoading$ | async">
+  <app-loader></app-loader>
+</app-overlay>
+<ng-container *ngIf="(eventQuotas$ | async)?.result as eQuotas">
+  <div class="bg-dark">
+    <time class="text-small inline-block text-info pda-4 mgt-4">{{
+      eQuotas.StartTimeUtc | date: "d MMMM y"
+    }}</time>
+    <p class="pda-4 flex">
+      <span class="icon-18 bg-dark-600 icon-stats inline-block"> </span>
+      <span class="inline-block mgl-4">{{ eQuotas.Name }}</span>
+    </p>
+    <ul>
+      <li *ngFor="let item of eQuotas.GroupedMarkets">
+        <app-expandable
+          [expandableName]="item.Name"
+          [headerText]="item.Name"
+          [expandableWrapperClass]="'bg-dark-800'"
+          [id]="item.Id"
+        >
+          <!-- CONTENT -->
+          <ul class="bg-dark">
+            <li *ngFor="let market of item.Markets" class="single-market pda-4">
+              <p class="text-left pdx-4">{{ market.Name }}</p>
+              <div class="card-wrapper grid">
+                <ng-container *ngFor="let odd of market.Odds">
+                  <app-card
+                    *ngFor="let odd of market.Odds"
+                    [selection]="odd.Selection"
+                    [value]="odd.Value"
+                  ></app-card>
+                </ng-container>
+              </div>
+            </li>
+          </ul>
+        </app-expandable>
+      </li>
+    </ul>
+  </div>
+</ng-container>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SportGroupListResolver } from '../sport/sport-group-list.resolver';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
@@ -12,9 +11,6 @@ const routes: Routes = [
     path: 'sports/:group',
     loadChildren: () =>
       import('../sport/sport.module').then((m) => m.SportModule),
-    /*resolve: {
-      results: SportGroupListResolver,
-    },*/
   },
 ];
 
